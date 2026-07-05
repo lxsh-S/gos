@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lxsh-S/gostruc/internal/cli/create"
+	"github.com/lxsh-S/gos/internal/cli/create"
 
 	"github.com/spf13/cobra"
 )

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lxsh-S/gostruc/internal/cli/blueprint"
+	"github.com/lxsh-S/gos/internal/cli/blueprint"
 )
 
 func Creatego(ProjectName string) {
