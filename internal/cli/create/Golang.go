@@ -11,11 +11,6 @@ import (
 func Creatego(ProjectName string) {
 	projectName := ProjectName
 
-	// folders := []string{
-	// 	filepath.Join(projectName, "cmd"),
-	// 	filepath.Join(projectName, "internal"),
-	// 	filepath.Join(projectName, "pkg"),
-	// }
 	for _, folder := range blueprint.Goblueprint(projectName) {
 		err := os.MkdirAll(folder, 0o755)
 		if err != nil {
