@@ -3,31 +3,33 @@ package main
 import (
 	"fmt"
 	"os"
-	"path/filepath"
+
+	"github.com/lxsh-S/gostruc/internal/cli/create"
+
+	"github.com/spf13/cobra"
 )
 
 func main() {
+	rootCmd := &cobra.Command{
+		Use:   "gos",
+		Short: "Gos is used to create folder structures fast!",
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println("Welcome...")
+		},
+	}
+
+	if err := rootCmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
 	// Les check if the name is given
 	if len(os.Args) < 2 {
 		fmt.Println("Error: Please specify a project name")
-		fmt.Println("Usage: 'gos <yourr-prroject-name>'")
+		fmt.Println("Usage: 'gos <your-project-name>'")
 		return
-	}
-
-	projectName := os.Args[1]
-
-	// foder structure slice
-	folders := []string{
-		filepath.Join(projectName, "cmd"),
-		filepath.Join(projectName, "internal"),
-		filepath.Join(projectName, "pkg"),
-	}
-
-	// Loop and create folders
-	for _, folder := range folders {
-		err := os.MkdirAll(folder, 0o755)
-		if err != nil {
-			fmt.Printf("Error creating folder structure %s: %v", folder, err)
-		}
+	} else { // if name is given then let's call Creatego func in Golang.go
+		projectName := os.Args[1]
+		create.Creatego(projectName)
 	}
 }
