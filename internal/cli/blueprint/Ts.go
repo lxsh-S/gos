@@ -2,13 +2,6 @@ package blueprint
 
 import "path/filepath"
 
-// Project types constants
-const (
-	TypeNextjs  = "nextjs"
-	TypeNodeAPI = "node-api"
-	TypeLibrary = "library"
-)
-
 func TsBlueprint(projectName string, projectType string) []string {
 	var folders []string
 
