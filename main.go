@@ -4,14 +4,17 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/fatih/color"
+	"github.com/fatih/color" // Not the std one
 
-	"github.com/lxsh-S/gos/internal/cli/create"
+	"github.com/lxsh-S/gos/internal/cli/define"
 
 	"github.com/spf13/cobra"
 )
 
-var projectType string
+var (
+	projectLang string
+	projectType string
+)
 
 func main() {
 	rootCmd := &cobra.Command{
@@ -22,12 +25,14 @@ func main() {
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Printf("Building project: %s\n Project Type: %s\n", color.CyanString(args[0]), color.YellowString(projectType))
 			projectName := args[0]
-			create.Creatego(projectName, projectType)
+			define.Create(projectName, projectType, projectLang)
 			fmt.Println(color.GreenString("Done!"))
 		},
 	}
 
 	rootCmd.Flags().StringVarP(&projectType, "type", "t", "std", "Project structure type ['std', 'api', 'web']")
+
+	rootCmd.Flags().StringVarP(&projectLang, "lang", "l", "go", "Project Language ['go', 'ts', 'cpp']")
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

@@ -2,7 +2,7 @@ package blueprint
 
 import "path/filepath"
 
-func NextjsBlueprint(ProjectName string) []string {
+func TsBlueprint(ProjectName string) []string {
 	projectName := ProjectName
 
 	folders := []string{
