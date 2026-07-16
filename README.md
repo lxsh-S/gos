@@ -186,4 +186,4 @@ go run .
 - [x] Adding flag for project type for Golang projects
 - [x] Different language support
 - [x] Adding project structure for cpp
-- [ ] Push to AUR and Homebrew
+- [x] Push to AUR and Homebrew
