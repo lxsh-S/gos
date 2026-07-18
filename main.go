@@ -33,7 +33,7 @@ func main() {
 			}
 			return cobra.ExactArgs(1)(cmd, args)
 		},
-		Version: "0.6.9",
+		Version: "0.7.1",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if list {
 				printSupported()
