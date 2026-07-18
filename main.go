@@ -14,15 +14,31 @@ import (
 var (
 	projectLang string
 	projectType string
+	list        bool
 )
+
+func printSupported() {
+	fmt.Println(color.HiBlueString("go") + ":  std, api, cli")
+	fmt.Println(color.HiBlueString("ts") + ":  std, api, lib, nxtjs")
+	fmt.Println(color.HiBlueString("cpp") + ": std, app, lib")
+}
 
 func main() {
 	rootCmd := &cobra.Command{
-		Use:     "gos [projectName]",
-		Short:   "Gos is used to create folder structures fast!",
-		Args:    cobra.ExactArgs(1),
-		Version: "0.6.5",
+		Use:   "gos [projectName]",
+		Short: "Gos is used to create folder structures fast!",
+		Args: func(cmd *cobra.Command, args []string) error {
+			if list {
+				return nil
+			}
+			return cobra.ExactArgs(1)(cmd, args)
+		},
+		Version: "0.6.7",
 		RunE: func(cmd *cobra.Command, args []string) error {
+			if list {
+				printSupported()
+				return nil
+			}
 			fmt.Printf("Building project: %s\nProject Language: %s\nProject Type: %s\n", color.CyanString(args[0]), color.HiBlueString(projectLang), color.YellowString(projectType))
 			projectName := args[0]
 			if err := define.Create(projectName, projectType, projectLang); err != nil {
@@ -37,6 +53,7 @@ func main() {
 
 	rootCmd.Flags().StringVarP(&projectLang, "lang", "l", "go", "Project Language ['go', 'ts', 'cpp']")
 
+	rootCmd.Flags().BoolVar(&list, "list", false, "List all the project type combinations for each language")
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(color.RedString("Error: %s", err))
 		os.Exit(1)
