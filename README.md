@@ -195,5 +195,5 @@ go run .
 - [x] Different language support
 - [x] Adding project structure for cpp
 - [x] Push to AUR and Homebrew
-- [x] Lsit flag
-- [ ] Fix CD workflow
+- [x] List flag
+- [x] Fix CD workflow
