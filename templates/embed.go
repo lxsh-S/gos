@@ -2,5 +2,5 @@ package templates
 
 import "embed"
 
-//go:embed go/*.tmpl cpp/*.tmpl ts/*.tmpl
+//go:embed go ts cpp
 var FS embed.FS
