@@ -197,3 +197,4 @@ go run .
 - [x] Push to AUR and Homebrew
 - [x] List flag
 - [x] Fix CD workflow
+- [ ] Add boilerpalte files for every project structure
