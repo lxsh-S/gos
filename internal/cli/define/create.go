@@ -9,11 +9,11 @@ import (
 func Create(projectName, projectType, projectLang string) error {
 	switch projectLang {
 	case "go":
-		return create.Creatego(projectName, projectType)
+		return create.CreateGO(projectName, projectType)
 	case "ts":
-		return create.CreateTs(projectName, projectType)
+		return create.CreateTS(projectName, projectType)
 	case "cpp":
-		return create.CreatCpp(projectName, projectType)
+		return create.CreatCPP(projectName, projectType)
 	default:
 		return fmt.Errorf("unknown project language: %q (expected: go, ts, cpp)", projectLang)
 	}

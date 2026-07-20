@@ -3,15 +3,16 @@ package blueprint
 import (
 	"fmt"
 	"path/filepath"
+
+	"github.com/lxsh-S/gos/templates"
 )
 
-func TsBlueprint(projectName string, projectType string) ([]string, error) {
-	var folders []string
-
+func TSBlueprint(projectName string, projectType string) (*Blueprint, error) {
+	bp := &Blueprint{}
 	switch projectType {
 	case "nxtjs":
 		// nextjs
-		folders = []string{
+		bp.Folders = []string{
 			filepath.Join(projectName, "public"),
 			filepath.Join(projectName, "src", "app"),
 			filepath.Join(projectName, "src", "components"),
@@ -20,10 +21,31 @@ func TsBlueprint(projectName string, projectType string) ([]string, error) {
 			filepath.Join(projectName, "src", "hooks"),
 			filepath.Join(projectName, "src", "types"),
 		}
+		dataReadme, err := templates.FS.ReadFile("ts/nxtjs/README.md.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataGitignore, err := templates.FS.ReadFile("ts/common/gitignore.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		bp.Files = []File{
+			{
+				Path:    filepath.Join(projectName, "README.md"),
+				Content: string(dataReadme),
+			},
+
+			{
+				Path:    filepath.Join(projectName, ".gitignore"),
+				Content: string(dataGitignore),
+			},
+		}
 
 	case "api":
 		// api
-		folders = []string{
+		bp.Folders = []string{
 			filepath.Join(projectName, "src", "config"),
 			filepath.Join(projectName, "src", "controllers"),
 			filepath.Join(projectName, "src", "middlewares"),
@@ -34,25 +56,161 @@ func TsBlueprint(projectName string, projectType string) ([]string, error) {
 			filepath.Join(projectName, "tests"),
 		}
 
+		dataIndex, err := templates.FS.ReadFile("ts/api/index.ts.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataPackage, err := templates.FS.ReadFile("ts/api/package.json.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataGitignore, err := templates.FS.ReadFile("ts/common/gitignore.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataReadme, err := templates.FS.ReadFile("ts/common/README.md.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		bp.Files = []File{
+			{
+				Path:    filepath.Join(projectName, "src", "index.ts"),
+				Content: string(dataIndex),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "package.json"),
+				Content: string(dataPackage),
+			},
+
+			{
+				Path:    filepath.Join(projectName, ".gitignore"),
+				Content: string(dataGitignore),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "README.md"),
+				Content: string(dataReadme),
+			},
+		}
+
 	case "lib":
 		// library
-		folders = []string{
+		bp.Folders = []string{
 			filepath.Join(projectName, "src"),
 			filepath.Join(projectName, "src", "utils"),
 			filepath.Join(projectName, "src", "types"),
 			filepath.Join(projectName, "src", "__tests__"),
 		}
 
+		dataIndex, err := templates.FS.ReadFile("ts/lib/index.ts.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataPackage, err := templates.FS.ReadFile("ts/lib/package.json.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataGitignore, err := templates.FS.ReadFile("ts/common/gitignore.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataReadme, err := templates.FS.ReadFile("ts/common/README.md.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		bp.Files = []File{
+			{
+				Path:    filepath.Join(projectName, "src", "index.ts"),
+				Content: string(dataIndex),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "package.json"),
+				Content: string(dataPackage),
+			},
+
+			{
+				Path:    filepath.Join(projectName, ".gitignore"),
+				Content: string(dataGitignore),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "README.md"),
+				Content: string(dataReadme),
+			},
+		}
+
 	case "std", "":
 		// std
-		folders = []string{
+		bp.Folders = []string{
 			filepath.Join(projectName, "src"),
 			filepath.Join(projectName, "dist"),
+		}
+
+		dataIndex, err := templates.FS.ReadFile("ts/std/index.ts.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataPackage, err := templates.FS.ReadFile("ts/std/package.json.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataGitignore, err := templates.FS.ReadFile("ts/common/gitignore.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataTSConfig, err := templates.FS.ReadFile("ts/std/tsconfig.json.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataReadme, err := templates.FS.ReadFile("ts/common/README.md.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		bp.Files = []File{
+			{
+				Path:    filepath.Join(projectName, "src", "index.ts"),
+				Content: string(dataIndex),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "package.json"),
+				Content: string(dataPackage),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "tsconfig.json"),
+				Content: string(dataTSConfig),
+			},
+
+			{
+				Path:    filepath.Join(projectName, ".gitignore"),
+				Content: string(dataGitignore),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "README.md"),
+				Content: string(dataReadme),
+			},
 		}
 
 	default:
 		return nil, fmt.Errorf("unknown ts project type: %q", projectType)
 	}
 
-	return folders, nil
+	return bp, nil
 }
