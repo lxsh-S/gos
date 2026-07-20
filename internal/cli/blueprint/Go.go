@@ -30,7 +30,7 @@ func Goblueprint(projectName string, projectType string) (*Blueprint, error) {
 			filepath.Join(projectName, "pkg"),
 		}
 
-		dataMain, err := templates.FS.ReadFile("go/main.cpp.tmpl")
+		dataMain, err := templates.FS.ReadFile("go/main.go.tmpl")
 		if err != nil {
 			return nil, err
 		}
