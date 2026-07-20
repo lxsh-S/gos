@@ -185,16 +185,3 @@ git clone https://github.com/lxsh-S/gos.git
 cd gos
 go run .
 ```
-
-# Plan
-
-- [x] Basic prototype
-- [x] Adding cobra
-- [x] Adding project structure for Golang
-- [x] Adding flag for project type for Golang projects
-- [x] Different language support
-- [x] Adding project structure for cpp
-- [x] Push to AUR and Homebrew
-- [x] List flag
-- [x] Fix CD workflow
-- [ ] Add boilerpalte files for every project structure
