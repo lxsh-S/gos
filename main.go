@@ -14,6 +14,7 @@ import (
 var (
 	projectLang string
 	projectType string
+	gomkdir     string
 	list        bool
 )
 
@@ -55,6 +56,10 @@ func main() {
 	rootCmd.Flags().StringVarP(&projectLang, "lang", "l", "go", "Project Language ['go', 'ts', 'cpp']")
 
 	rootCmd.Flags().BoolVar(&list, "list", false, "List all the project type combinations for each language")
+
+	// Adding mkdir flag
+	rootCmd.Flags().StringVarP(&gomkdir, "mkdir", "m", "mkdir", "Makes a directory")
+
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(color.RedString("Error: %s", err))
 		os.Exit(1)
