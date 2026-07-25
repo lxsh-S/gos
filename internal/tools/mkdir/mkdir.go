@@ -8,7 +8,7 @@ import (
 
 func GOMkdir(folderName string) {
 	targetPath := filepath.Join(".", folderName)
-	err := os.Mkdir(targetPath, 0755)
+	err := os.Mkdir(targetPath, 0o755)
 	if err != nil {
 		log.Fatal(err)
 	}

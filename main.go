@@ -19,6 +19,7 @@ var (
 )
 
 func printSupported() {
+	fmt.Println(color.HiBlueString("gosdir") + "'projectName'")
 	fmt.Println(color.HiBlueString("go") + ":  std, api, cli")
 	fmt.Println(color.HiBlueString("ts") + ":  std, api, lib, nxtjs")
 	fmt.Println(color.HiBlueString("cpp") + ": std, app, lib")
@@ -65,7 +66,6 @@ func main() {
 
 	rootCmd.Flags().BoolVar(&list, "list", false, "List all the project type combinations for each language")
 
-	// Adding mkdir flag
 	rootCmd.Flags().StringVarP(&gomkdirFile, "gomkdir", "m", "gomkdir", "Makes a dir")
 
 	if err := rootCmd.Execute(); err != nil {
