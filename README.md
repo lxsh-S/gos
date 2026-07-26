@@ -42,6 +42,12 @@ gos Make-project -l ts -t api   --Creates a Typescript boilerplate for a API pro
 gos Make-project -l ts -t nxtjs --Creates a standard Typescript biolerplate for Next.js projects
 ```
 
+### List `Lang and types`
+
+```
+gos --list 
+```
+
 # Installation
 
 ### AUR (Arch User Repository)
@@ -70,7 +76,7 @@ But I recommend to use an alias for making the new directory.
 Add this to your shell (The one given below is same that I use i.e .bashrc)
 
 ```
-alias gosdir='gos mkdir -m ' --Note that space after "-m" is important 
+alias gosdir='gos mkdir -m ' --Note that space after "-m" is important
 ```
 
 Note:- Only works for versions after `0.8.5` i.e from and beyond version `0.9.0`
