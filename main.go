@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/fatih/color" // Not the std one
 
@@ -38,6 +40,27 @@ func main() {
 
 		Version: "0.8.1",
 		RunE: func(cmd *cobra.Command, args []string) error {
+			// Les create a folder to store custom temolates by the user
+			//
+			//Get the user's dir:
+			homedir, err := os.UserHomeDir()
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			targetPath := filepath.Join(homedir, ".gos")
+			templateFolder := filepath.Join(targetPath, "usr_Templates")
+
+			err1 := os.MkdirAll(targetPath, 0o755)
+			if err1 != nil {
+				log.Fatal(err1)
+			}
+
+			err3 := os.MkdirAll(templateFolder, 0o755)
+			if err3 != nil {
+				log.Fatal(err3)
+			}
+
 			if list {
 				printSupported()
 				return nil
