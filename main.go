@@ -17,6 +17,7 @@ var (
 	projectLang string
 	projectType string
 	gomkdirFile string
+	goaddFile   string
 	list        bool
 )
 
@@ -66,7 +67,10 @@ func main() {
 				return nil
 			}
 			projectName := args[0]
-			if projectName == "mkdir" {
+			if projectName == "gosadd" {
+				folderName := goaddFile
+				define.GOAddRun(folderName)
+			} else if projectName == "mkdir" {
 				folderName := gomkdirFile
 				define.GOMkdirRun(folderName)
 				fmt.Printf("Empty dir: %s created!", folderName)
@@ -91,6 +95,7 @@ func main() {
 
 	rootCmd.Flags().StringVarP(&gomkdirFile, "gomkdir", "m", "gomkdir", "Makes a dir")
 
+	rootCmd.Flags().StringVarP(&goaddFile, "add", "a", "gosadd", "Make your current project a template!")
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(color.RedString("Error: %s", err))
 		os.Exit(1)
