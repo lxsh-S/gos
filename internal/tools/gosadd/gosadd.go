@@ -57,7 +57,7 @@ func HandelAddCommand(folderName string) error {
 		return fmt.Errorf("failed to copy template files: %w", err)
 	}
 
-	fmt.Printf("Successfully saved template!: ", templateName)
+	fmt.Printf("Successfully saved template!: %s\n", templateName)
 	return nil
 }
 
