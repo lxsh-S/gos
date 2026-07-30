@@ -85,7 +85,7 @@ Or if Using the binary version add:
 alias gosdir='./YOUR_BINARY_NAME mkdir -m '
 ```
 
-## Gosadd
+### Gosadd
 
 The current way to add a new custom template is
 
@@ -93,7 +93,7 @@ The current way to add a new custom template is
 gos gosadd -a "FolderName"
 ```
 
-But because it feels so bad to type that big command we'll use this
+But because it feels so bad to type that big command we'll use this (.bashrc)
 
 ```
 alias gosadd='gos gosadd -a ' --Space is important here too 
