@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="1304" height="1585" alt="mascot" src="https://github.com/user-attachments/assets/d297eb68-8065-4016-8f27-8bd6127f7946" />
+  <img width="400" alt="mascot" src="https://github.com/user-attachments/assets/d297eb68-8065-4016-8f27-8bd6127f7946" />
 </p>
 # GOS
 *gos* is a simple CLI tool that help to make a project structure fast and quick!
