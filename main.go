@@ -102,11 +102,11 @@ func main() {
 
 	rootCmd.Flags().StringVarP(&gomkdirFile, "gomkdir", "m", "gomkdir", "Makes a dir")
 
-	rootCmd.Flags().StringVarP(&projectTemplate, "template", "T", "", "Make a new folder with the stored template")
-
 	rootCmd.Flags().StringVarP(&goaddFile, "add", "a", "gosadd", "Make your current project a template!")
 
-	rootCmd.Flags().StringVarP(&projectNameForGosget, "projectName", "P", "", "The project Name for the folder created using custom templates that are saved by you")
+	rootCmd.Flags().StringVarP(&projectTemplate, "template", "e", "", "Make a new folder with the stored template")
+
+	rootCmd.Flags().StringVarP(&projectNameForGosget, "projectName", "p", "", "The project Name for the folder created using custom templates that are saved by you")
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(color.RedString("Error: %s", err))
