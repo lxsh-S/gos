@@ -85,12 +85,18 @@ Or if Using the binary version add:
 alias gosdir='./YOUR_BINARY_NAME mkdir -m '
 ```
 
+Then the command gets simplified to
+
+```
+gosdir FolderName
+```
+
 ### Gosadd
 
 The current way to add a new custom template is
 
 ```
-gos gosadd -a "FolderName"
+gosadd -a "FolderName"
 ```
 
 But because it feels so bad to type that big command we'll use this (.bashrc)
@@ -103,6 +109,42 @@ Or if your using the binary version
 
 ```
 alias gosdir='./YOUR_BINARY_NAME gosadd -a '
+```
+
+Then the command gets simplified to
+
+```
+goadd projectName
+```
+
+### Gosget
+
+The current way to import an saved user template is
+Here:-
+
+- `projectName` is the name you wanna give the new folder
+- `templateName` is the templates name that you have saved in `.gos`
+
+```
+gos gosget -p projectName -e templateName 
+```
+
+But he recommend way is to add this to your (.bashrc)
+
+```
+alias gosget='gos gosget'
+```
+
+or if using the binary version
+
+```
+alias gosget='./YOUR_BINARY_NAME gosget'
+```
+
+Then the command gets simplified to
+
+```
+gosget -p projectName -e templateName
 ```
 
 Note:- Only works for versions after `0.8.5` i.e from and beyond version `0.9.0`
