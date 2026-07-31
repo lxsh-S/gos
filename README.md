@@ -1,4 +1,5 @@
 # GOS
+<img width="474" height="266" alt="test2" src="https://github.com/user-attachments/assets/d621e9ed-2c68-40b6-9cc8-a5ee60afd028" />
 
 <img width="1267" height="762" alt="gos" src="https://github.com/user-attachments/assets/18cc8a38-405a-4f5d-a5e8-f37c65b79613" />
 
