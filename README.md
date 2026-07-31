@@ -3,6 +3,7 @@
 </p>
 
 # GOS
+
 *gos* is a simple CLI tool that help to make a project structure fast and quick!
 
 # Design choices and goals
@@ -10,6 +11,8 @@
 Gos is not intended to compete with any other project structuring tool it's a fun hobby project made because of my interest in CLI tools.
 
 # Quick Start
+
+`Note: This part won't be needed mostly because I've added a feature to add custom templates`
 
 ### Golang
 
