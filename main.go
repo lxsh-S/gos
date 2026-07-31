@@ -14,11 +14,13 @@ import (
 )
 
 var (
-	projectLang string
-	projectType string
-	gomkdirFile string
-	goaddFile   string
-	list        bool
+	projectLang          string
+	projectType          string
+	gomkdirFile          string
+	goaddFile            string
+	projectTemplate      string
+	projectNameForGosget string
+	list                 bool
 )
 
 func printSupported() {
@@ -67,7 +69,12 @@ func main() {
 				return nil
 			}
 			projectName := args[0]
-			if projectName == "gosadd" {
+
+			if projectName == "gosget" {
+				templateName := projectTemplate
+				projectName := projectNameForGosget
+				define.GoGetRun(projectName, templateName)
+			} else if projectName == "gosadd" {
 				folderName := goaddFile
 				define.GOAddRun(folderName)
 			} else if projectName == "mkdir" {
@@ -95,7 +102,12 @@ func main() {
 
 	rootCmd.Flags().StringVarP(&gomkdirFile, "gomkdir", "m", "gomkdir", "Makes a dir")
 
+	rootCmd.Flags().StringVarP(&projectTemplate, "template", "T", "", "Make a new folder with the stored template")
+
 	rootCmd.Flags().StringVarP(&goaddFile, "add", "a", "gosadd", "Make your current project a template!")
+
+	rootCmd.Flags().StringVarP(&projectNameForGosget, "projectName", "P", "", "The project Name for the folder created using custom templates that are saved by you")
+
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(color.RedString("Error: %s", err))
 		os.Exit(1)
