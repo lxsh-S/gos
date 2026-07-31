@@ -41,7 +41,7 @@ func main() {
 			return cobra.ExactArgs(1)(cmd, args)
 		},
 
-		Version: "0.8.1",
+		Version: "0.9.5",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			// Les create a folder to store custom temolates by the user
 			//
