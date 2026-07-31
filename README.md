@@ -147,8 +147,6 @@ Then the command gets simplified to
 gosget -p projectName -e templateName
 ```
 
-Note:- Only works for versions after `0.8.5` i.e from and beyond version `0.9.0`
-
 # Contribute
 
 ```bash
